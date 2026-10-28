@@ -98,78 +98,21 @@ Its main activities are:
 
 A simplified memory hierarchy is shown below. Moving upward generally means faster, smaller, and more expensive storage per byte.
 
-
-## Memory Hierarchy
-
-### বাংলা ব্যাখ্যা
-কম্পিউটারের memory ও storage বিভিন্ন স্তরে সাজানো থাকে। উপরের স্তরগুলো সাধারণত দ্রুত কাজ করে, কিন্তু ধারণক্ষমতা কম। নিচের স্তরগুলোতে বেশি data রাখা যায়, তবে access করতে সাধারণত বেশি সময় লাগে।
-
-### Diagram: Memory Hierarchy Pyramid
-
-<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 720 390" role="img" aria-label="Memory hierarchy pyramid">
-  <style>
-    .label { font-family: Arial, sans-serif; font-size: 14px; font-weight: 600; text-anchor: middle; fill: #172554; }
-    .category { font-family: Arial, sans-serif; font-size: 13px; fill: #334155; }
-    .bracket { fill: none; stroke: #64748b; stroke-width: 2; }
-  </style>
-
-  <text x="250" y="22" text-anchor="middle" font-family="Arial, sans-serif" font-size="17" font-weight="bold" fill="currentColor">Memory Hierarchy</text>
-
-  <!-- Level 1: Registers -->
-  <rect x="190" y="35" width="120" height="35" rx="3" fill="#bbf7d0" stroke="#15803d" stroke-width="1.5"/>
-  <text x="250" y="57" class="label">CPU Registers</text>
-
-  <!-- Level 2: Cache -->
-  <polygon points="160,78 340,78 355,123 145,123" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
-  <text x="250" y="105" class="label">Cache Memory</text>
-
-  <!-- Level 3: RAM -->
-  <polygon points="145,131 355,131 390,183 110,183" fill="#fef3c7" stroke="#d97706" stroke-width="1.5"/>
-  <text x="250" y="153" class="label">Main Memory (RAM)</text>
-  <text x="250" y="171" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#78350f">Primary Memory</text>
-
-  <!-- Level 4: Secondary storage -->
-  <polygon points="110,191 390,191 430,253 70,253" fill="#fed7aa" stroke="#ea580c" stroke-width="1.5"/>
-  <text x="250" y="216" class="label">Secondary Storage</text>
-  <text x="250" y="237" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#7c2d12">USB / SD Card / SSD / HDD</text>
-
-  <!-- Level 5: Tertiary storage -->
-  <polygon points="70,261 430,261 475,330 25,330" fill="#e9d5ff" stroke="#9333ea" stroke-width="1.5"/>
-  <text x="250" y="288" class="label">Tertiary / Offline Storage</text>
-  <text x="250" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#581c87">Magnetic Tape</text>
-
-  <!-- Classification labels -->
-  <path d="M 365 35 H 375 V 123 H 365" class="bracket"/>
-  <text x="385" y="70" class="category">Internal</text>
-  <text x="385" y="87" class="category">Storage</text>
-
-  <path d="M 400 131 H 410 V 183 H 400" class="bracket"/>
-  <text x="420" y="151" class="category">Primary</text>
-  <text x="420" y="168" class="category">Memory</text>
-
-  <path d="M 440 191 H 450 V 253 H 440" class="bracket"/>
-  <text x="460" y="211" class="category">Secondary</text>
-  <text x="460" y="228" class="category">Storage</text>
-
-  <path d="M 485 261 H 495 V 330 H 485" class="bracket"/>
-  <text x="505" y="287" class="category">Tertiary</text>
-  <text x="505" y="304" class="category">Storage</text>
-
-  <text x="250" y="357" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="currentColor">Downward: Larger capacity • Generally slower access</text>
-</svg>
-
-### Important Points
-
-- **CPU Registers:** Very small and extremely fast storage inside the CPU.
-- **Cache Memory:** Stores frequently needed data and instructions for faster access.
-- **Main Memory (RAM):** Holds currently running programs and data.
-- **Secondary Storage:** SSD, HDD, USB flash drive, and SD card provide long-term storage.
-- **Tertiary Storage:** Magnetic tape is commonly used for backups and archival storage.
-
-**Remember:** Moving downward in the hierarchy generally means greater capacity and slower access.
-
-**Note:** Registers and cache are often grouped as internal/primary storage in textbook classifications. RAM is the main memory. USB, SD card, SSD, and HDD are usually classified as secondary storage; magnetic tape is commonly used as tertiary or offline storage.
-
+### Diagram: Memory hierarchy
+```mermaid
+flowchart TB
+    R([CPU Registers])
+    C([Cache])
+    M[Main Memory — RAM]
+    S[(SSD / HDD)]
+    R --> C --> M --> S
+    classDef fast fill:#dcfce7,stroke:#15803d,color:#14532d
+    classDef main fill:#e8f3ff,stroke:#2563eb,color:#172554
+    classDef store fill:#fff1d6,stroke:#d97706,color:#78350f
+    class R,C fast
+    class M main
+    class S store
+```
 
 **Example:** When a program opens, the OS loads its required instructions and data into RAM and keeps track of the memory assigned to it.
 
